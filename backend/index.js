@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const mysql = require('mysql2');
+const db = require('./dbConn');
 
 const app = express();
 const PORT = 1411;
@@ -8,25 +8,19 @@ const PORT = 1411;
 app.use(cors());
 app.use(express.json());
 
-// Connect to MySQL
-/*const db = mysql.createConnection({
-  host: '88.200.63.148',
-  user: 'codeigniter',
-  password: 'codeigniter2019',
-  database: 'SISIII2024_89231110'
-});
-
-/*db.connect(err => {
-  if (err) {
-    console.error('DB connection failed:', err);
-  } else {
-    console.log('Connected to MySQL');
-  }
-});*/
 
 // Example route
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello from Express!' });
+});
+
+app.get('/api/test-db', (req, res) => {
+  db.query('SELECT NOW() as now', (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    }
+    res.json(results);
+  });
 });
 
 app.listen(PORT, () => {
