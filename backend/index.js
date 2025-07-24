@@ -1,12 +1,21 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./dbConn');
+const { adminRouter } = require( "./Routes/AdminRoute");
 
 const app = express();
 const PORT = 1411;
 
-app.use(cors());
+app.use(cors({
+  origin: ["http://88.200.63.148:1410"],
+  methods: [
+    'GET', 'POST', 'PUT'
+  ],
+  credentials: true
+}));
 app.use(express.json());
+
+app.use('/auth', adminRouter);
 
 
 // Example route
