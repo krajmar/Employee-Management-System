@@ -13,9 +13,14 @@ app.use(cors({
   ],
   credentials: true
 }));
+
+app.use(express.static('Public'))
+app.use('/Images', express.static('Public/Images'));
+
 app.use(express.json());
 
 app.use('/auth', adminRouter);
+
 
 
 // Example route

@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import axios from 'axios';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddEmployee = () => {
     const [employee,setEmployee] = useState({
@@ -14,6 +15,7 @@ const AddEmployee = () => {
         image: ''
     })
     const [category, setCategory] = useState([])
+    const navigate = useNavigate()
     useEffect(()=>{
         axios.get('http://88.200.63.148:1411/auth/category')
         .then(result => {
@@ -37,7 +39,14 @@ const AddEmployee = () => {
         formData.append('image',employee.image);
         formData.append('category_id',employee.category_id);
         axios.post('http://88.200.63.148:1411/auth/add_employee', formData)
-        .then(result=>console.log(result.data))
+        .then(result=>{
+            if(result.data.Status){
+                navigate('/dashboard/employee')
+            }
+            else{
+                alert(result.data.Error)
+            }
+        })
         .catch(err => console.log(err))
     }
     return (
