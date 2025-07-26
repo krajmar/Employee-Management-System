@@ -11,6 +11,7 @@ import Employee from './Components/Employee.jsx'
 import Category from './Components/Category.jsx'
 import Profile from './Components/Profile.jsx'
 import AddCategory from './Components/AddCategory.jsx'
+import AddEmployee from './Components/AddEmployee.jsx'
 
 function App() {
   //const [count, setCount] = useState(0)

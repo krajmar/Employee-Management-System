@@ -10,6 +10,27 @@ const express = require('express');
 const router = express.Router();
 const db = require('../dbConn');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const multer = require('multer');
+const path = require('path');
+
+//image upload
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb)=>{
+    cb(null, 'Public/Images')
+  }, 
+  filename: (req,file, cb)=>{
+    cb(null, file.fieldname+"_"+Date.now()+path.extname(file.originalname))
+  }
+})
+
+const upload = multer({
+  storage: storage
+})
+
+//end image upload
+
 
 router.post('/adminlogin', (req, res) => {
   console.log('/adminlogin was hit!');
@@ -41,10 +62,31 @@ router.get('/category',(req,res)=>{
 })
 
 router.post('/add_category', (req,res) => {
-  const sql = "INSERT INTO category (`name`) VALUES (?)"
+  const sql = "INSERT INTO category (name) VALUES (?)"
   db.query(sql,[req.body.category], (err,result)=>{
     if(err) return res.json({Status: false, Error: "Query Error"})
     return res.json({Status: true})
   })
+})
+
+router.post('/add_employee',upload.single('image'),(req,res)=>{
+  const sql = "INSERT INTO employees (name,email,password,salary,address,image,category_id) VALUES (?)"
+  bcrypt.hash(req.body.password, 10, (err, hash)=>{
+    if(err) return res.json({Status: false, Error: "Query Error"})
+      const values = [
+        req.body.name,
+        req.body.email,
+        hash,
+        req.body.salary,
+        req.body.address,
+        req.file.filename,
+        req.body.category_id
+      ]
+      db.query(sql, [values], (err,result)=>{
+        if(err) return res.json({Status: false, Error: "Query Error"})
+        return res.json({Status: true})        
+      })
+  })
+
 })
 module.exports = { adminRouter: router };
