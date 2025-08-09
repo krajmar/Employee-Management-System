@@ -9,7 +9,7 @@ const PORT = 1411;
 app.use(cors({
   origin: ["http://88.200.63.148:1410"],
   methods: [
-    'GET', 'POST', 'PUT'
+    'GET', 'POST', 'PUT', 'DELETE'
   ],
   credentials: true
 }));

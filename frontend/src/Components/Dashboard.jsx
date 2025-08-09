@@ -3,8 +3,20 @@ import { Link, Outlet } from 'react-router-dom';
 import './style.css';
 import './style_dashboard.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+  const navigate = useNavigate()
+  axios.defaults.withCredentials = true
+  const handleLogout = () => {
+    axios.get('http://88.200.63.148:1411/auth/logout')
+    .then(result=>{
+      if(result.data.Status){
+        navigate('/adminlogin')
+      }
+    })
+  }
   return (
     <div className="dashboard-container">
       <aside className="sidebar">
@@ -39,7 +51,7 @@ const Dashboard = () => {
                 &nbsp;<span>Profile</span>
               </Link>
             </li>
-            <li>
+            <li onClick={handleLogout}>
               <Link to="/logout">
                 <i className="bi bi-box-arrow-right"></i>
                 &nbsp;<span>Logout</span>

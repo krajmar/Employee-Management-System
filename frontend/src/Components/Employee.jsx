@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const Employee = () => {
     const [employee, setEmployee] = useState([])
+    const navigate = useNavigate()
     useEffect(()=>{
 axios.get('http://88.200.63.148:1411/auth/employee')
         .then(result => {
@@ -16,6 +18,18 @@ axios.get('http://88.200.63.148:1411/auth/employee')
             }
         }).catch(err=>console.log(err))
     },[])
+
+    const handleDelete = (id)=>{
+        axios.delete('http://88.200.63.148:1411/auth/delete_employee/'+id)
+        .then(result => {
+            if(result.data.Status){
+                window.location.reload()
+            }else{
+                alert(result.data.Error)
+            }
+        })
+    }
+
     return (
         <div className="px-5 mt-3">
             <div className="d-flex justify-content-center">
@@ -45,7 +59,7 @@ axios.get('http://88.200.63.148:1411/auth/employee')
                                     <td>{e.salary}</td>
                                     <td>
                                         <Link to={`/dashboard/edit_employee/`+e.id} className="btn btn-info btn-sm me-2">Edit</Link>
-                                        <button className="btn btn-warning btn-sm">Delete</button>
+                                        <button className="btn btn-warning btn-sm" onClick={()=>handleDelete(e.id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))
