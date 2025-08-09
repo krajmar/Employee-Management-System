@@ -12,6 +12,7 @@ import Category from './Components/Category.jsx'
 import Profile from './Components/Profile.jsx'
 import AddCategory from './Components/AddCategory.jsx'
 import AddEmployee from './Components/AddEmployee.jsx'
+import EditEmployee from './Components/EditEmployee.jsx'
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -26,7 +27,8 @@ function App() {
             <Route path='/dashboard/category' element={<Category/>}></Route>
             <Route path='/dashboard/profile' element={<Profile/>}></Route>
             <Route path='/dashboard/add_category' element={<AddCategory/>}></Route>
-             <Route path='/dashboard/add_employee' element={<AddEmployee/>}></Route>
+            <Route path='/dashboard/add_employee' element={<AddEmployee/>}></Route>
+            <Route path='/dashboard/edit_employee/:id' element={<EditEmployee/>}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

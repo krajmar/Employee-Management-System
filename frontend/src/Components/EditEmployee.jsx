@@ -1,21 +1,11 @@
-import React from "react";
-import { useEffect } from "react";
-import axios from 'axios';
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import axios from 'axios'
 
-const AddEmployee = () => {
-    const [employee,setEmployee] = useState({
-        name: '',
-        email: '',
-        password: '',
-        salary: '',
-        address: '',
-        category_id: '',
-        image: ''
-    })
+
+const EditEmployee= () => {
     const [category, setCategory] = useState([])
-    const navigate = useNavigate()
     useEffect(()=>{
         axios.get('http://88.200.63.148:1411/auth/category')
         .then(result => {
@@ -26,35 +16,29 @@ const AddEmployee = () => {
                alert(result.data.Error) 
             }
         }).catch(err=>console.log(err))
-    },[])
 
-    const handleSubmit=(e)=>{
-        e.preventDefault()
-        const formData = new FormData();
-        formData.append('name',employee.name);
-        formData.append('email',employee.email);
-        formData.append('password',employee.password);
-        formData.append('address',employee.address);
-        formData.append('salary',employee.salary);
-        formData.append('image',employee.image);
-        formData.append('category_id',employee.category_id);
-        axios.post('http://88.200.63.148:1411/auth/add_employee', formData)
-        .then(result=>{
-            if(result.data.Status){
-                navigate('/dashboard/employee')
-            }
-            else{
-                alert(result.data.Error)
-            }
-        })
-        .catch(err => console.log(err))
-    }
-    return (
-        <div className="container mt-5">
+         axios.get('http://88.200.63.148:1411/auth/employee'+id)
+        .then(result => {
+           console.log(result.data)
+        }).catch(err=>console.log(err))
+    },[])
+    
+    const [employee,setEmployee] = useState({
+        name: '',
+        email: '',
+        password: '',
+        salary: '',
+        address: '',
+        category_id: '',
+        image: ''
+    })
+    const {id} = useParams()
+    return(
+       <div className="container mt-5">
         <div className='d-flex mx-auto justify-content-center'>
             <div className='p-3 rounded border w-100' style={{maxWidth: '700px',textAlign: 'left'}}>
-                <h2 style={{textAlign: 'center'}}>Add New Employee</h2>
-                <form className="row g-1" onSubmit={handleSubmit}>
+                <h2 style={{textAlign: 'center'}}>Edit Employee</h2>
+                <form className="row g-1">
                     <div className='mb-3 col-12'>
                         <label htmlFor='inputName'><b>Name and Surname:</b></label>
                         <input type="text" name="inputName" id="inputName" autoComplete='off' placeholder='Enter name and surname:' className='form-control rounded-0'
@@ -112,4 +96,4 @@ const AddEmployee = () => {
     )
 }
 
-export default AddEmployee
+export default EditEmployee

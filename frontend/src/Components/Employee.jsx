@@ -44,8 +44,8 @@ axios.get('http://88.200.63.148:1411/auth/employee')
                                     <td>{e.address}</td>
                                     <td>{e.salary}</td>
                                     <td>
-                                        <button>Update</button>
-                                        <button>Delete</button>
+                                        <Link to={`/dashboard/edit_employee/`+e.id} className="btn btn-info btn-sm me-2">Edit</Link>
+                                        <button className="btn btn-warning btn-sm">Delete</button>
                                     </td>
                                 </tr>
                             ))
