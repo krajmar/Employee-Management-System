@@ -12,11 +12,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 
-  display: flex;                /* center child vertically/horizontally */
+  display: flex;  
   justify-content: center;
   align-items: center;
 
-  min-height: 100vh;            /* full screen height */
+  min-height: 100vh;         
   width: 100%;
 }
 
@@ -27,11 +27,11 @@ body {
   justify-content: center;
   align-items: center;
 
-  background-color: rgba(0, 0, 0, 0.5); /* optional: translucent bg */
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 2rem;
   row-gap: 1rem;
   border-radius: 8px;
-  max-width: 400px;             /* limit width */
+  max-width: 400px;          
   width: 100%;
 }
 
@@ -53,8 +53,8 @@ body {
   background-size: cover;
 
   width: 400px;
-  min-height: 400px;  /* Allow to grow */
-  margin: 100px auto; /* Center it horizontally */
+  min-height: 400px; 
+  margin: 100px auto; 
   position: relative;
 }
 
@@ -66,7 +66,7 @@ body {
   align-items: center;
 
   width: 100%;
-  padding: 2rem;  /* Use padding instead of height */
+  padding: 2rem; 
   row-gap: 1rem;
 }
 
@@ -80,17 +80,17 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 
-  display: flex;               /* Flexbox to center content */
+  display: flex;               
   justify-content: center;
   align-items: center;
 
-  min-height: 100vh;           /* Fill screen height */
-  padding: 1rem;               /* Some padding for small screens */
+  min-height: 100vh;           
+  padding: 1rem;           
 }
 
-/* The actual form box */
+
 .loginForm1 {
-  background-color: rgba(0, 0, 0, 0.65);  /* Slightly transparent */
+  background-color: rgba(0, 0, 0, 0.65);  
   color: white;
   display: flex;
   flex-direction: column;
@@ -104,19 +104,19 @@ body {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Space between fields */
+
 .loginForm1 form .mb-3,
 .loginForm1 form .mb-1 {
   margin-bottom: 1rem;
 }
 
-/* Labels */
+
 .loginForm1 label {
   display: block;
   margin-bottom: 0.3rem;
 }
 
-/* Inputs */
+
 .loginForm1 input[type="email"],
 .loginForm1 input[type="password"] {
   background-color: #f8f8f8;
@@ -126,12 +126,10 @@ body {
   width: 100%;
 }
 
-/* Checkbox alignment */
 .loginForm1 input[type="checkbox"] {
   margin-right: 0.5rem;
 }
 
-/* Submit button */
 .loginForm1 button {
   padding: 0.6rem;
   border: none;
@@ -146,14 +144,13 @@ body {
   background-color: #218838;
 }
 
-/* Error message */
+
 .loginForm1 .text-danger {
   margin-bottom: 1rem;
   font-size: 0.9rem;
   color: #ff4d4d;
 }
 
-/* Responsive */
 @media (max-width: 500px) {
   .loginForm {
     padding: 1.5rem;
@@ -170,10 +167,9 @@ body {
   display: flex;
   justify-content: center;
 
-  /* Allow vertical scrolling if needed */
   min-height: 100vh;
   padding: 2rem 1rem;
-  overflow-y: auto;  /* important fix */
+  overflow-y: auto;
 }
 
 .loginForm {
@@ -186,16 +182,15 @@ body {
   padding: 2rem;
   row-gap: 1rem;
   border-radius: 8px;
-  max-width: 700px; /* bigger for your employee form */
+  max-width: 700px; 
   width: 100%;
 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Responsive adjustments */
 @media (max-height: 700px), (max-width: 500px) {
   .loginPage {
-    align-items: flex-start; /* top align on smaller viewports */
+    align-items: flex-start;
   }
   .loginForm {
     margin-top: 1rem;

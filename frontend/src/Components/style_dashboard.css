@@ -11,14 +11,14 @@ html, body, #root {
 .dashboard-container {
   display: flex;
   width: 100%;
-  min-height: 100vh; /* allow it to grow if content is taller */
+  min-height: 100vh;
 }
 
 .dashboard-content {
   flex: 1;
   padding: 40px;
   background-color: #ecf0f1;
-  overflow-y: auto; /* scroll if content overflows */
+  overflow-y: auto; 
 }
 
 .sidebar {

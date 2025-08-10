@@ -22,7 +22,7 @@ const Dashboard = () => {
       <aside className="sidebar">
         <div className="sidebar-header">
           <Link to="/dashboard" className="logo">
-            CWC
+            EMS
           </Link>
         </div>
         <nav className="sidebar-nav">
@@ -34,7 +34,7 @@ const Dashboard = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/employee_by_category">
+              <Link to="/dashboard/sort_employee">
                 <i className="bi bi-people"></i>
                 &nbsp;<span>Manage Employees</span>
               </Link>
@@ -46,9 +46,9 @@ const Dashboard = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/sort_employee">
+              <Link to="/dashboard/employee_by_category">
                 <i className="bi bi-person"></i>
-                &nbsp;<span>Sort & Filter</span>
+                &nbsp;<span>Filter Employees</span>
               </Link>
             </li>
             <li onClick={handleLogout}>
