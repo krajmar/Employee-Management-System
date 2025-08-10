@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const db = require('./dbConn');
 const { adminRouter } = require( "./Routes/AdminRoute");
+const { employeeRouter } = require( "./Routes/EmployeeRoute");
 
 const app = express();
 const PORT = 1411;
@@ -20,6 +21,7 @@ app.use('/Images', express.static('Public/Images'));
 app.use(express.json());
 
 app.use('/auth', adminRouter);
+app.use('/auth', employeeRouter)
 
 
 

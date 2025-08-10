@@ -13,6 +13,9 @@ import Profile from './Components/Profile.jsx'
 import AddCategory from './Components/AddCategory.jsx'
 import AddEmployee from './Components/AddEmployee.jsx'
 import EditEmployee from './Components/EditEmployee.jsx'
+import Start from './Components/Start.jsx'
+import EmployeeLogin from './Components/EmployeeLogin.jsx'
+import EmployeeDetail from './Components/EmployeeDetail.jsx'
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -20,7 +23,10 @@ function App() {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path='adminlogin' element={<Login/>}></Route>
+          <Route path = '/start' element={<Start/>}></Route>
+          <Route path='/adminlogin' element={<Login/>}></Route>
+          <Route path='/employee_login' element={<EmployeeLogin/>}></Route>
+          <Route path='/detail/:id' element={<EmployeeDetail/>}></Route>
           <Route path='/dashboard' element={<Dashboard/>}>
             <Route path='' element={<Home/>}></Route>
             <Route path='/dashboard/employee' element={<Employee/>}></Route>

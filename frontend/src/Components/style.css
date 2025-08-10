@@ -5,19 +5,21 @@ body {
   min-height: 100vh;
 }
 
-/* ✅ Use min-height, not fixed height, so they can grow if content overflows */
 .loginPage {
-  background: linear-gradient(rgba(11,11,11,0.7), rgba(10,10,10,0.7)), url('./src/assets/employees1.png');
+  background: linear-gradient(rgba(11, 11, 11, 0.7), rgba(10, 10, 10, 0.7)),
+              url('./src/assets/employees1.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
-  width: 400px;
-  min-height: 500px; /* Allow it to grow larger if needed */
-  margin: 2rem auto; /* Center it horizontally with auto margins */
+  display: flex;                /* center child vertically/horizontally */
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;            /* full screen height */
+  width: 100%;
 }
 
-/* ✅ The form should NOT force its parent’s height — let it size naturally */
 .loginForm {
   color: white;
   display: flex;
@@ -25,12 +27,25 @@ body {
   justify-content: center;
   align-items: center;
 
-  width: 100%;
-  padding: 2rem;  /* Use padding instead of height 100% */
+  background-color: rgba(0, 0, 0, 0.5); /* optional: translucent bg */
+  padding: 2rem;
   row-gap: 1rem;
+  border-radius: 8px;
+  max-width: 400px;             /* limit width */
+  width: 100%;
 }
 
-/* ✅ Same fix for category page */
+.employee_image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 .categoryPage {
   background-color: #180236;
   background-position: center;
@@ -55,14 +70,92 @@ body {
   row-gap: 1rem;
 }
 
-.employee_image {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+
+/*----------------------------------------------------------------*/
+
+.loginPage1 {
+  background: linear-gradient(rgba(11, 11, 11, 0.7), rgba(10, 10, 10, 0.7)),
+              url('./src/assets/employees1.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;               /* Flexbox to center content */
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;           /* Fill screen height */
+  padding: 1rem;               /* Some padding for small screens */
 }
 
-#root {
-  min-height: 100vh;
-  height: auto;
-  overflow-x: hidden;
+/* The actual form box */
+.loginForm1 {
+  background-color: rgba(0, 0, 0, 0.65);  /* Slightly transparent */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Space between fields */
+.loginForm1 form .mb-3,
+.loginForm1 form .mb-1 {
+  margin-bottom: 1rem;
+}
+
+/* Labels */
+.loginForm1 label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* Inputs */
+.loginForm1 input[type="email"],
+.loginForm1 input[type="password"] {
+  background-color: #f8f8f8;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 100%;
+}
+
+/* Checkbox alignment */
+.loginForm1 input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+/* Submit button */
+.loginForm1 button {
+  padding: 0.6rem;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.loginForm1 button:hover {
+  background-color: #218838;
+}
+
+/* Error message */
+.loginForm1 .text-danger {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #ff4d4d;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .loginForm {
+    padding: 1.5rem;
+  }
 }
