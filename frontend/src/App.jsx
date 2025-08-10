@@ -16,6 +16,8 @@ import EditEmployee from './Components/EditEmployee.jsx'
 import Start from './Components/Start.jsx'
 import EmployeeLogin from './Components/EmployeeLogin.jsx'
 import EmployeeDetail from './Components/EmployeeDetail.jsx'
+import EmployeeSortable from './Components/EmployeeSortable.jsx'
+import EmployeeByCategory from './Components/EmployeeByCategory.jsx'
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -35,6 +37,8 @@ function App() {
             <Route path='/dashboard/add_category' element={<AddCategory/>}></Route>
             <Route path='/dashboard/add_employee' element={<AddEmployee/>}></Route>
             <Route path='/dashboard/edit_employee/:id' element={<EditEmployee/>}></Route>
+            <Route path='/dashboard/sort_employee' element={<EmployeeSortable/>}></Route>
+            <Route path='/dashboard/employee_by_category' element={<EmployeeByCategory/>}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

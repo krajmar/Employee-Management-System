@@ -52,7 +52,13 @@ axios.get('http://88.200.63.148:1411/auth/employee')
                         {
                             employee.map(e => (
                                 <tr key={e.id}>
-                                    <td><img src={'http:88.200.63.148:1411/Images/'+e.image} className="employee_image" alt="employee"/></td>
+                                    <td>
+                                        <img
+                                        src={`http://88.200.63.148:1411/Images/${e.image}`}
+                                        className="employee_image"
+                                        alt="employee"
+                                    />
+                                    </td>
                                     <td>{e.name}</td>
                                     <td>{e.email}</td>
                                     <td>{e.address}</td>

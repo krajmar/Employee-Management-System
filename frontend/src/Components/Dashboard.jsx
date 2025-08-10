@@ -34,7 +34,7 @@ const Dashboard = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/employee">
+              <Link to="/dashboard/employee_by_category">
                 <i className="bi bi-people"></i>
                 &nbsp;<span>Manage Employees</span>
               </Link>
@@ -46,9 +46,9 @@ const Dashboard = () => {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard/profile">
+              <Link to="/dashboard/sort_employee">
                 <i className="bi bi-person"></i>
-                &nbsp;<span>Profile</span>
+                &nbsp;<span>Sort & Filter</span>
               </Link>
             </li>
             <li onClick={handleLogout}>

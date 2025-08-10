@@ -173,4 +173,18 @@ router.get('/logout', (req,res)=>{
   return res.json({Status: true})
 })
 
+router.get('/employee_by_category', (req, res) => {
+  const categoryId = req.query.category_id; 
+
+  if (!categoryId) {
+    return res.json({ Status: false, Error: "category_id is required" });
+  }
+
+  const sql = "SELECT * FROM employees WHERE category_id = ?";
+  db.query(sql, [categoryId], (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" });
+    return res.json({ Status: true, Result: result });
+  });
+});
+
 module.exports = { adminRouter: router };
