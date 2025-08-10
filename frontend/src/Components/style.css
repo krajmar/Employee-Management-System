@@ -159,3 +159,52 @@ body {
     padding: 1.5rem;
   }
 }
+
+.loginPage {
+  background: linear-gradient(rgba(11, 11, 11, 0.7), rgba(10, 10, 10, 0.7)),
+              url('./src/assets/employees1.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+
+  /* Allow vertical scrolling if needed */
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  overflow-y: auto;  /* important fix */
+}
+
+.loginForm {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  row-gap: 1rem;
+  border-radius: 8px;
+  max-width: 700px; /* bigger for your employee form */
+  width: 100%;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-height: 700px), (max-width: 500px) {
+  .loginPage {
+    align-items: flex-start; /* top align on smaller viewports */
+  }
+  .loginForm {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

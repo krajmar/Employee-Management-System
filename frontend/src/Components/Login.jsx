@@ -32,7 +32,7 @@ const Login = () => {
       <div className="loginForm">
         {error && <div className="text-danger">{error}</div>}
 
-        <h2>Employee Log In Page</h2>
+        <h2>Admin Log In Page</h2>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-3">

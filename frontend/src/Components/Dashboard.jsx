@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import './style.css';
 import './style_dashboard.css';
+import './style.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

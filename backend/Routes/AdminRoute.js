@@ -33,10 +33,14 @@ const upload = multer({
 
 
 router.post('/adminlogin', (req, res) => {
-  console.log('/adminlogin was hit!');
+  //console.log('/adminlogin was hit!');
   const sql = "SELECT * FROM admin WHERE email = ? AND password = ?"
   db.query(sql,[req.body.email, req.body.password], (err,result)=>{
-    if(err) return res.json({loginStatus: false, Error: "Query error"})
+    if (err) {
+    console.error('MySQL error:', err);
+  return res.json({ loginStatus: false, Error: err.code || err.message });
+}
+
     if(result.length > 0){
       const email = result[0].email;
       const token = jwt.sign({role: "admin", email: email},
