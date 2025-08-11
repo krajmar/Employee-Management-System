@@ -13,6 +13,7 @@ import Profile from './Components/Profile.jsx'
 import AddCategory from './Components/AddCategory.jsx'
 import AddEmployee from './Components/AddEmployee.jsx'
 import EditEmployee from './Components/EditEmployee.jsx'
+import EditAdmin from './Components/EditAdmin.jsx'
 import Start from './Components/Start.jsx'
 import EmployeeLogin from './Components/EmployeeLogin.jsx'
 import EmployeeDetail from './Components/EmployeeDetail.jsx'
@@ -39,6 +40,7 @@ function App() {
             <Route path='/dashboard/add_category' element={<AddCategory/>}></Route>
             <Route path='/dashboard/add_employee' element={<AddEmployee/>}></Route>
             <Route path='/dashboard/edit_employee/:id' element={<EditEmployee/>}></Route>
+            <Route path='/dashboard/edit_admin/:id' element={<EditAdmin/>}></Route>
             <Route path='/dashboard/sort_employee' element={<EmployeeSortable/>}></Route>
             <Route path='/dashboard/employee_by_category' element={<EmployeeByCategory/>}></Route>
           </Route>

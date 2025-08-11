@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
@@ -48,6 +49,17 @@ const Home = () => {
         .then(result =>{
             if(result.data.Status){
                 setSalaryTotal(result.data.Result[0].salary)
+            }
+        })
+    }
+
+    const handleDelete = (id)=>{
+        axios.delete('http://88.200.63.148:1411/auth/delete_admin/'+id)
+        .then(result => {
+            if(result.data.Status){
+                window.location.reload()
+            }else{
+                alert(result.data.Error)
             }
         })
     }
@@ -101,8 +113,8 @@ const Home = () => {
                                 <tr>
                                     <td>{a.email}</td>
                                     <td>
-                                        <button className="btn btn-info btn-sm me-2">Edit</button>
-                                        <button className="btn btn-warning btn-sm" >Delete</button>
+                                        <Link to={`/dashboard/edit_admin/${a.id}`} className="btn btn-info btn-sm me-2">Edit</Link>    
+                                        <button className="btn btn-warning btn-sm" onClick={()=>handleDelete(a.id)} >Delete</button>
                                     </td>
                                 </tr>
                             ))
@@ -115,3 +127,4 @@ const Home = () => {
 }
 
 export default Home
+//<button className="btn btn-info btn-sm me-2">Edit</button>

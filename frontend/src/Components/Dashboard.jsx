@@ -17,6 +17,7 @@ const Dashboard = () => {
       }
     })
   }
+  
   return (
     <div className="dashboard-container">
       <aside className="sidebar">

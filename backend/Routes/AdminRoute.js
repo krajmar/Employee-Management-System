@@ -111,6 +111,15 @@ router.get('/employee/:id', (req,res)=>{
   })
 })
 
+router.get('/admin/:id', (req,res)=>{
+  const id = req.params.id;
+  const sql = "SELECT * FROM admin WHERE id = ?";
+  db.query(sql,[id], (err,result)=>{
+     if(err) return res.json({Status: false, Error: "Query Error"})
+    return res.json({Status: true, Result: result})
+  })
+})
+
 router.put('/edit_employee/:id',(req,res)=>{
   const id = req.params.id;
   const sql = "UPDATE employees SET name = ?, email = ?, salary = ?, address = ?, category_id = ? WHERE id = ?"
@@ -127,9 +136,31 @@ router.put('/edit_employee/:id',(req,res)=>{
   })
 })
 
+router.put('/edit_admin/:id',(req,res)=>{
+  const id = req.params.id;
+  const sql = "UPDATE admin SET email = ?, password = ? WHERE id = ?"
+  const values = [
+        req.body.email,
+        req.body.password
+      ]
+  db.query(sql,[...values, id], (err,result)=>{
+     if(err) return res.json({Status: false, Error: "Query Error"})
+    return res.json({Status: true, Result: result})
+  })
+})
+
 router.delete('/delete_employee/:id', (req,res)=>{
   const id = req.params.id;
   const sql = "DELETE FROM employees WHERE id = ?"
+  db.query(sql,[id], (err,result)=>{
+     if(err) return res.json({Status: false, Error: "Query Error"})
+    return res.json({Status: true, Result: result})
+  })
+})
+
+router.delete('/delete_admin/:id', (req,res)=>{
+  const id = req.params.id;
+  const sql = "DELETE FROM admin WHERE id = ?"
   db.query(sql,[id], (err,result)=>{
      if(err) return res.json({Status: false, Error: "Query Error"})
     return res.json({Status: true, Result: result})
