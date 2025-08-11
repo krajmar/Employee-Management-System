@@ -3,6 +3,7 @@ import './style.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 const EmployeeDetail = () => {
@@ -26,6 +27,15 @@ const EmployeeDetail = () => {
     })
     }
 
+    /*const handleEdit = () => {
+        axios.get('http://88.200.63.148:1411/auth/logout_emp')
+    .then(result=>{
+      if(result.data.Status){
+        navigate('/start')
+      }
+    })
+    }*/
+
     return (
         <div>
             <div className='p-2 d-flex justify-content-center shadow' style={{color: 'white'}}>
@@ -39,7 +49,7 @@ const EmployeeDetail = () => {
                     <h3>Salary: {employee.salary}$</h3>
                 </div>
                 <div>
-                    <button className='btn btn-primary me-2'>Edit</button>
+                    <Link to={`/self_edit_employee/`+id} className="btn btn-primary me-2">Edit</Link>
                     <button className='btn btn-danger' onClick={handleLogout}>Logout</button>
                 </div>
             </div>
@@ -48,3 +58,4 @@ const EmployeeDetail = () => {
 };
 
 export default EmployeeDetail;
+//<button className='btn btn-primary me-2' onclick={handleEdit}>Edit</button>

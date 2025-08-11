@@ -18,6 +18,7 @@ import EmployeeLogin from './Components/EmployeeLogin.jsx'
 import EmployeeDetail from './Components/EmployeeDetail.jsx'
 import EmployeeSortable from './Components/EmployeeSortable.jsx'
 import EmployeeByCategory from './Components/EmployeeByCategory.jsx'
+import SelfEditEmployee from './Components/SelfEditEmployee.jsx'
 
 function App() {
   //const [count, setCount] = useState(0)
@@ -28,6 +29,7 @@ function App() {
           <Route path = '/start' element={<Start/>}></Route>
           <Route path='/adminlogin' element={<Login/>}></Route>
           <Route path='/employee_login' element={<EmployeeLogin/>}></Route>
+          <Route path='/self_edit_employee/:id' element={<SelfEditEmployee/>}></Route>
           <Route path='/detail/:id' element={<EmployeeDetail/>}></Route>
           <Route path='/dashboard' element={<Dashboard/>}>
             <Route path='' element={<Home/>}></Route>

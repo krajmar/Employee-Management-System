@@ -47,4 +47,18 @@ router.get('/logout_emp', (req,res) => {
   return res.json({Status: true})
 })
 
+router.put('/self_edit_employee/:id',(req,res)=>{
+  const id = req.params.id;
+  const sql = "UPDATE employees SET name = ?, email = ?, address = ? WHERE id = ?"
+  const values = [
+        req.body.name,
+        req.body.email,
+        req.body.address,
+      ]
+  db.query(sql,[...values, id], (err,result)=>{
+     if(err) return res.json({Status: false, Error: "Query Error"})
+    return res.json({Status: true, Result: result})
+  })
+})
+
 module.exports = { employeeRouter: router };
